@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EsperanzaHoy • PWA</title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="stylesheet" href="/styles.css" />
+    <meta name="theme-color" content="#244B81" />
+    <link rel="apple-touch-icon" href="/assets/icon-192.png" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <img src="/assets/logo.png" alt="Asambleas de Dios" />
+        <div>
+          <h1>EsperanzaHoy</h1>
+          <div class="tag">No estás solo. Aún hay luz.</div>
+        </div>
+      </header>
+      <section class="hero">
+        <h2>Un mensaje para tiempos difíciles</h2>
+        <p class="mode-pill">
+          Modo: <label for="modeToggle">Fe cristiana</label>
+          <input
+            id="modeToggle"
+            type="checkbox"
+            checked
+            aria-label="Cambiar entre Fe cristiana y Mensaje universal"
+          />
+          <span>/ Mensaje universal</span>
+        </p>
+        <div id="offlineBanner" class="offline">
+          Estás sin conexión. Este contenido funciona offline.
+        </div>
+        <div class="cta">
+          <button
+            id="btnPlay"
+            class="btn primary"
+            onclick="document.getElementById('audioMsg').play()"
+          >
+            ▶ Escuchar ahora (60 s)
+          </button>
+          <a
+            id="btnPray"
+            class="btn accent"
+            href="https://forms.gle/TU-FORMULARIO"
+            target="_blank"
+            rel="noopener"
+            >🤝 Pedir oración / ayuda</a
+          ><a class="btn" href="/privacy.html">Privacidad</a>
+        </div>
+      </section>
+      <section class="card">
+        <audio id="audioMsg" controls preload="auto">
+          <source src="/assets/audio-esperanza.wav" type="audio/wav" />
+          Tu navegador no soporta audio.
+        </audio>
+        <div id="message-faith" style="display: block; margin-top: 12px">
+          <p>
+            Quizá hoy te pesa la corrupción, la inseguridad o las guerras. Jesús
+            dijo: <em>“La paz les dejo; mi paz les doy”</em> (Jn 14:27). Esa paz
+            no ignora el dolor; lo atraviesa contigo. Respira… cuenta tres
+            veces. No estás solo: hay una familia que ora por ti. Si necesitas
+            que oremos, toca el botón. Si buscas dirección, abre los pasos
+            sencillos que preparamos. Y recuerda:
+            <em>“Los que confían en el Señor renovarán sus fuerzas”</em> (Is
+            40:31). Hoy, da un pequeño paso: comparte este mensaje con alguien
+            que lo necesite. Dios te bendiga.
+          </p>
+        </div>
+        <div id="message-universal" style="display: none; margin-top: 12px">
+          <p>
+            Tal vez sientes que el mundo se rompe: violencia, corrupción,
+            guerra. Aun así, hay actos pequeños que sostienen la esperanza.
+            Respira… cuenta tres veces. Pide ayuda: hablar con alguien reduce la
+            carga. Da un gesto de bondad: un mensaje, una visita, un perdón.
+            Aquí tienes recursos y una guía breve. Si deseas contarnos algo o
+            pedir apoyo, toca el botón. La esperanza no es ingenua: es la
+            decisión de creer que tu próximo paso puede iluminar el camino.
+          </p>
+        </div>
+      </section>
+      <section>
+        <h2 style="color: #244b81">3 pasos prácticos</h2>
+        <div class="cards">
+          <div class="card">
+            <h3>1) Respirar</h3>
+            <p>
+              Inhala 4s, sostiene 4s, exhala 6s. Repite 3 veces. Deja que tu
+              mente se calme para decidir el siguiente paso.
+            </p>
+          </div>
+          <div class="card">
+            <h3>2) Pedir apoyo</h3>
+            <p>
+              Hablar baja la carga. Usa el botón “Pedir oración/ayuda” o
+              conversa con alguien de confianza hoy.
+            </p>
+          </div>
+          <div class="card">
+            <h3>3) Hacer un bien</h3>
+            <p>
+              Manda un mensaje de ánimo, visita a alguien, ofrece perdón.
+              Pequeñas luces cambian ambientes.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2 style="color: #244b81">Dirección de la Iglesia</h2>
+        <div class="address">
+          <address>
+            <strong>Asambleas de Dios — Iglesia Luz y Vida</strong><br />Los
+            licenciados Mz U Lt 1, Perú<br /><strong>Horarios:</strong> Martes,
+            Jueves, Sábado y Domingo de 6:00 p. m. a 8:30 p. m.
+          </address>
+          <div style="margin-top: 10px" class="share">
+            <a
+              class="btn primary"
+              target="_blank"
+              rel="noopener"
+              href="https://www.google.com/maps/search/?api=1&query=Los%20licenciados%20Mz%20U%20Lt%201%20Peru"
+              >🧭 Cómo llegar</a
+            >
+            <a
+              class="btn"
+              target="_blank"
+              rel="noopener"
+              href="tel:+51910661724"
+              >📞 Llamar</a
+            ><a
+              class="btn"
+              target="_blank"
+              rel="noopener"
+              href="https://wa.me/51910661724?text=Hola%2C%20quisiera%20m%C3%A1s%20informaci%C3%B3n%20de%20la%20iglesia."
+              >WhatsApp</a
+            >
+          </div>
+          <div style="margin-top: 10px">
+            <iframe
+              class="mapframe"
+              loading="lazy"
+              allowfullscreen
+              src="https://www.google.com/maps?q=Los%20licenciados%20Mz%20U%20Lt%201&z=16&output=embed"
+            ></iframe>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2 style="color: #244b81">Comparte</h2>
+        <div class="share">
+          <a
+            class="btn"
+            target="_blank"
+            rel="noopener"
+            href="https://api.whatsapp.com/send?text=Escucha%20este%20mensaje%20de%20esperanza:%20https://iglesia.miqueas.dev/eh"
+            >WhatsApp</a
+          >
+          <a
+            class="btn"
+            target="_blank"
+            rel="noopener"
+            href="https://t.me/share/url?url=https://tu-iglesia.pe/eh&text=Un%20mensaje%20de%20esperanza"
+            >Telegram</a
+          >
+          <a
+            class="btn"
+            target="_blank"
+            rel="noopener"
+            href="mailto:?subject=EsperanzaHoy&body=Escucha%20este%20mensaje:%20https://iglesia.miqueas.dev/eh"
+            >Email</a
+          >
+        </div>
+        <small class="muted"
+          >App instalable (PWA). Funciona sin conexión tras la primera
+          visita.</small
+        >
+      </section>
+      <div class="footer">
+        <small>© Asambleas de Dios — EsperanzaHoy</small> ·
+        <a href="/privacy.html">Privacidad</a> ·
+        <small>Hecho con cariño en Perú</small>
+      </div>
+    </div>
+    <script src="/app.js" defer></script>
+  </body>
+</html>
