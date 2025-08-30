@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Personalizado - EsperanzaHoy</title>
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .qr-container {
+            background: white;
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 400px;
+        }
+
+        h1 {
+            color: #1a365d;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #718096;
+            margin-bottom: 30px;
+        }
+
+        #qr-wrapper {
+            position: relative;
+            display: inline-block;
+            padding: 20px;
+            background: linear-gradient(135deg, #f7fafc 0%, #fef5e7 100%);
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        #qrcode-custom {
+            position: relative;
+        }
+
+        .qr-logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            font-size: 30px;
+            z-index: 10;
+        }
+
+        .qr-logo img {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
+        }
+
+        .qr-frame {
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 3px solid transparent;
+            border-image: linear-gradient(45deg, #667eea, #764ba2) 1;
+            border-radius: 8px;
+            pointer-events: none;
+        }
+
+        .url-display {
+            margin-top: 20px;
+            padding: 12px 20px;
+            background: #f7fafc;
+            border-radius: 8px;
+            color: #2c5282;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .download-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 25px;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #1a365d 0%, #ed8936 100%);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #e2e8f0;
+            color: #1a365d;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .toggle-logo {
+            margin-top: 20px;
+        }
+
+        .toggle-logo label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            color: #4a5568;
+        }
+
+        .toggle-logo input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        /* Animación */
+        @keyframes pulse {
+            0% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.05); }
+            100% { transform: translate(-50%, -50%) scale(1); }
+        }
+
+        .qr-logo {
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        /* Canvas styles */
+        #canvas-qr {
+            display: none;
+        }
+
+        .color-options {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f7fafc;
+            border-radius: 12px;
+        }
+
+        .color-options h3 {
+            color: #2c5282;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .color-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .color-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .color-btn.active {
+            border-color: #1a365d;
+            box-shadow: 0 0 0 3px rgba(26, 54, 93, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="qr-container">
+        <h1>QR Code Personalizado</h1>
+        <p>Comparte esperanza con este código QR único</p>
+
+        <div id="qr-wrapper">
+            <div class="qr-frame"></div>
+            <div id="qrcode-custom"></div>
+            <div class="qr-logo" id="qrLogo" style="display: none;">
+                <!-- Aquí puedes agregar tu logo como imagen -->
+                <img src="/assets/logo.png" alt="Logo"> 
+                <!-- O usar un emoji/icono por defecto -->
+                <!-- <span>✝️</span> -->
+            </div>
+        </div>
+
+        <div class="url-display">
+            iglesia.miqueas.dev
+        </div>
+
+        <div class="toggle-logo">
+            <label>
+                <input type="checkbox" id="toggleLogo">
+                <span>Mostrar logo en el centro</span>
+            </label>
+        </div>
+
+        <div class="color-options">
+            <h3>Personalizar colores:</h3>
+            <div class="color-grid">
+                <button class="color-btn active" style="background: #1a365d" data-color="#1a365d"></button>
+                <button class="color-btn" style="background: #667eea" data-color="#667eea"></button>
+                <button class="color-btn" style="background: #764ba2" data-color="#764ba2"></button>
+                <button class="color-btn" style="background: #ed8936" data-color="#ed8936"></button>
+                <button class="color-btn" style="background: #48bb78" data-color="#48bb78"></button>
+                <button class="color-btn" style="background: #f56565" data-color="#f56565"></button>
+                <button class="color-btn" style="background: #1a202c" data-color="#1a202c"></button>
+                <button class="color-btn" style="background: #2b6cb1" data-color="#2b6cb1"></button>
+            </div>
+        </div>
+
+        <div class="download-buttons">
+            <button class="btn btn-primary" id="downloadPNG">
+                📥 Descargar PNG
+            </button>
+            <button class="btn btn-secondary" id="downloadSVG">
+                📄 Descargar SVG
+            </button>
+        </div>
+
+        <canvas id="canvas-qr"></canvas>
+    </div>
+
+    <!-- QRCode.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    
+    <script>
+        // Configuration
+        const QR_CONFIG = {
+            text: "https://iglesia.miqueas.dev",
+            width: 256,
+            height: 256,
+            colorDark: "#1a365d",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H, // High error correction for logo
+            quietZone: 2,
+            quietZoneColor: "transparent"
+        };
+
+        // Initialize QR Code
+        let qrcode = new QRCode(document.getElementById("qrcode-custom"), {
+            ...QR_CONFIG,
+            onRenderingEnd: function() {
+                console.log('QR Code generated successfully');
+            }
+        });
+
+        // Toggle logo visibility
+        const toggleLogo = document.getElementById('toggleLogo');
+        const qrLogo = document.getElementById('qrLogo');
+
+        toggleLogo.addEventListener('change', (e) => {
+            if (e.target.checked) {
+                qrLogo.style.display = 'flex';
+                // Regenerate QR with higher error correction for logo
+                regenerateQR(QR_CONFIG.colorDark);
+            } else {
+                qrLogo.style.display = 'none';
+                // Regenerate QR with normal error correction
+                regenerateQR(QR_CONFIG.colorDark);
+            }
+        });
+
+        // Color customization
+        const colorButtons = document.querySelectorAll('.color-btn');
+        colorButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                colorButtons.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+                // Get color and regenerate QR
+                const color = btn.dataset.color;
+                regenerateQR(color);
+            });
+        });
+
+        // Regenerate QR Code with new settings
+        function regenerateQR(color) {
+            document.getElementById("qrcode-custom").innerHTML = '';
+            
+            const newConfig = {
+                ...QR_CONFIG,
+                colorDark: color,
+                correctLevel: toggleLogo.checked ? QRCode.CorrectLevel.H : QRCode.CorrectLevel.M
+            };
+            
+            qrcode = new QRCode(document.getElementById("qrcode-custom"), newConfig);
+        }
+
+        // Download as PNG
+        document.getElementById('downloadPNG').addEventListener('click', () => {
+            const wrapper = document.getElementById('qr-wrapper');
+            const canvas = document.getElementById('canvas-qr');
+            const ctx = canvas.getContext('2d');
+            
+            // Set canvas size
+            canvas.width = 320;
+            canvas.height = 320;
+            
+            // Draw white background
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Get QR code image
+            const qrImage = document.querySelector('#qrcode-custom img');
+            if (qrImage) {
+                // Draw QR code
+                ctx.drawImage(qrImage, 32, 32, 256, 256);
+                
+                // Draw logo if visible
+                if (toggleLogo.checked) {
+                    // Draw white circle background for logo
+                    ctx.fillStyle = '#ffffff';
+                    ctx.beginPath();
+                    ctx.arc(160, 160, 35, 0, Math.PI * 2);
+                    ctx.fill();
+                    
+                    // Draw logo text (emoji)
+                    ctx.font = '40px Arial';
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText('✝️', 160, 160);
+                }
+                
+                // Draw border
+                ctx.strokeStyle = QR_CONFIG.colorDark;
+                ctx.lineWidth = 4;
+                ctx.strokeRect(2, 2, 316, 316);
+                
+                // Download
+                canvas.toBlob((blob) => {
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'esperanzahoy-qr.png';
+                    a.click();
+                    URL.revokeObjectURL(url);
+                });
+            }
+        });
+
+        // Download as SVG
+        document.getElementById('downloadSVG').addEventListener('click', () => {
+            const svgContent = generateSVG();
+            const blob = new Blob([svgContent], { type: 'image/svg+xml' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'esperanzahoy-qr.svg';
+            a.click();
+            URL.revokeObjectURL(url);
+        });
+
+        // Generate SVG content
+        function generateSVG() {
+            const qrCanvas = document.querySelector('#qrcode-custom canvas');
+            const size = 256;
+            const modules = 33; // Standard QR code module count
+            const moduleSize = size / modules;
+            
+            let svg = `<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}">
+  <rect width="${size}" height="${size}" fill="white"/>
+  <g fill="${QR_CONFIG.colorDark}">`;
+
+            // This is a simplified SVG generation
+            // In production, you'd want to properly read the QR data
+            svg += `
+    <rect x="0" y="0" width="${size}" height="${size}" fill="white"/>
+    <text x="${size/2}" y="${size/2}" text-anchor="middle" font-size="20" fill="${QR_CONFIG.colorDark}">
+      QR Code Placeholder
+    </text>`;
+
+            if (toggleLogo.checked) {
+                svg += `
+    <circle cx="${size/2}" cy="${size/2}" r="35" fill="white"/>
+    <text x="${size/2}" y="${size/2}" text-anchor="middle" font-size="40" dominant-baseline="middle">✝️</text>`;
+            }
+
+            svg += `
+  </g>
+</svg>`;
+
+            return svg;
+        }
+
+        // Add smooth animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.querySelector('.qr-container');
+            container.style.opacity = '0';
+            container.style.transform = 'scale(0.9)';
+            
+            setTimeout(() => {
+                container.style.transition = 'all 0.5s ease';
+                container.style.opacity = '1';
+                container.style.transform = 'scale(1)';
+            }, 100);
+        });
+
+        // Instructions for adding custom logo
+        console.log(`
+        ================================================
+        INSTRUCCIONES PARA AGREGAR TU LOGO PERSONALIZADO:
+        ================================================
+        
+        1. Sube tu logo como 'logo.png' en la carpeta /assets/
+        2. En la línea 192, descomenta: <img src="/assets/logo.png" alt="Logo">
+        3. Comenta o elimina la línea 194: <span>✝️</span>
+        4. Ajusta el tamaño del logo modificando .qr-logo img en CSS
+        
+        RECOMENDACIONES:
+        - Logo cuadrado de al menos 200x200px
+        - Fondo transparente (PNG)
+        - Colores que contrasten con el QR
+        - Imagen optimizada (menos de 50KB)
+        
+        ================================================
+        `);
+    </script>
+</body>
+</html>
