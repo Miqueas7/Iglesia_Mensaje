@@ -1,188 +1,1225 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>EsperanzaHoy • PWA</title>
-    <link rel="manifest" href="/manifest.json" />
-    <link rel="stylesheet" href="/styles.css" />
-    <meta name="theme-color" content="#244B81" />
-    <link rel="apple-touch-icon" href="/assets/icon-192.png" />
-  </head>
-  <body>
-    <div class="container">
-      <header>
-        <img src="/assets/logo.png" alt="Asambleas de Dios" />
-        <div>
-          <h1>EsperanzaHoy</h1>
-          <div class="tag">No estás solo. Aún hay luz.</div>
-        </div>
-      </header>
-      <section class="hero">
-        <h2>Un mensaje para tiempos difíciles</h2>
-        <p class="mode-pill">
-          Modo: <label for="modeToggle">Fe cristiana</label>
-          <input
-            id="modeToggle"
-            type="checkbox"
-            checked
-            aria-label="Cambiar entre Fe cristiana y Mensaje universal"
-          />
-          <span>/ Mensaje universal</span>
-        </p>
-        <div id="offlineBanner" class="offline">
-          Estás sin conexión. Este contenido funciona offline.
-        </div>
-        <div class="cta">
-          <button
-            id="btnPlay"
-            class="btn primary"
-            onclick="document.getElementById('audioMsg').play()"
-          >
-            ▶ Escuchar ahora (60 s)
-          </button>
-          <a
-            id="btnPray"
-            class="btn accent"
-            href="https://forms.gle/TU-FORMULARIO"
-            target="_blank"
-            rel="noopener"
-            >🤝 Pedir oración / ayuda</a
-          ><a class="btn" href="/privacy.html">Privacidad</a>
-        </div>
-      </section>
-      <section class="card">
-        <audio id="audioMsg" controls preload="auto">
-          <source src="/assets/audio-esperanza.wav" type="audio/wav" />
-          Tu navegador no soporta audio.
-        </audio>
-        <div id="message-faith" style="display: block; margin-top: 12px">
-          <p>
-            Quizá hoy te pesa la corrupción, la inseguridad o las guerras. Jesús
-            dijo: <em>“La paz les dejo; mi paz les doy”</em> (Jn 14:27). Esa paz
-            no ignora el dolor; lo atraviesa contigo. Respira… cuenta tres
-            veces. No estás solo: hay una familia que ora por ti. Si necesitas
-            que oremos, toca el botón. Si buscas dirección, abre los pasos
-            sencillos que preparamos. Y recuerda:
-            <em>“Los que confían en el Señor renovarán sus fuerzas”</em> (Is
-            40:31). Hoy, da un pequeño paso: comparte este mensaje con alguien
-            que lo necesite. Dios te bendiga.
-          </p>
-        </div>
-        <div id="message-universal" style="display: none; margin-top: 12px">
-          <p>
-            Tal vez sientes que el mundo se rompe: violencia, corrupción,
-            guerra. Aun así, hay actos pequeños que sostienen la esperanza.
-            Respira… cuenta tres veces. Pide ayuda: hablar con alguien reduce la
-            carga. Da un gesto de bondad: un mensaje, una visita, un perdón.
-            Aquí tienes recursos y una guía breve. Si deseas contarnos algo o
-            pedir apoyo, toca el botón. La esperanza no es ingenua: es la
-            decisión de creer que tu próximo paso puede iluminar el camino.
-          </p>
-        </div>
-      </section>
-      <section>
-        <h2 style="color: #244b81">3 pasos prácticos</h2>
-        <div class="cards">
-          <div class="card">
-            <h3>1) Respirar</h3>
-            <p>
-              Inhala 4s, sostiene 4s, exhala 6s. Repite 3 veces. Deja que tu
-              mente se calme para decidir el siguiente paso.
-            </p>
-          </div>
-          <div class="card">
-            <h3>2) Pedir apoyo</h3>
-            <p>
-              Hablar baja la carga. Usa el botón “Pedir oración/ayuda” o
-              conversa con alguien de confianza hoy.
-            </p>
-          </div>
-          <div class="card">
-            <h3>3) Hacer un bien</h3>
-            <p>
-              Manda un mensaje de ánimo, visita a alguien, ofrece perdón.
-              Pequeñas luces cambian ambientes.
-            </p>
-          </div>
-        </div>
-      </section>
-      <section>
-        <h2 style="color: #244b81">Dirección de la Iglesia</h2>
-        <div class="address">
-          <address>
-            <strong>Asambleas de Dios — Iglesia Luz y Vida</strong><br />Los
-            licenciados Mz U Lt 1, Perú<br /><strong>Horarios:</strong> Martes,
-            Jueves, Sábado y Domingo de 6:00 p. m. a 8:30 p. m.
-          </address>
-          <div style="margin-top: 10px" class="share">
-            <a
-              class="btn primary"
-              target="_blank"
-              rel="noopener"
-              href="https://www.google.com/maps/search/?api=1&query=Los%20licenciados%20Mz%20U%20Lt%201%20Peru"
-              >🧭 Cómo llegar</a
-            >
-            <a
-              class="btn"
-              target="_blank"
-              rel="noopener"
-              href="tel:+51910661724"
-              >📞 Llamar</a
-            ><a
-              class="btn"
-              target="_blank"
-              rel="noopener"
-              href="https://wa.me/51910661724?text=Hola%2C%20quisiera%20m%C3%A1s%20informaci%C3%B3n%20de%20la%20iglesia."
-              >WhatsApp</a
-            >
-          </div>
-          <div style="margin-top: 10px">
-            <iframe
-              class="mapframe"
-              loading="lazy"
-              allowfullscreen
-              src="https://www.google.com/maps?q=Los%20licenciados%20Mz%20U%20Lt%201&z=16&output=embed"
-            ></iframe>
-          </div>
-        </div>
-      </section>
-      <section>
-        <h2 style="color: #244b81">Comparte</h2>
-        <div class="share">
-          <a
-            class="btn"
-            target="_blank"
-            rel="noopener"
-            href="https://api.whatsapp.com/send?text=Escucha%20este%20mensaje%20de%20esperanza:%20https://iglesia.miqueas.dev/eh"
-            >WhatsApp</a
-          >
-          <a
-            class="btn"
-            target="_blank"
-            rel="noopener"
-            href="https://t.me/share/url?url=https://tu-iglesia.pe/eh&text=Un%20mensaje%20de%20esperanza"
-            >Telegram</a
-          >
-          <a
-            class="btn"
-            target="_blank"
-            rel="noopener"
-            href="mailto:?subject=EsperanzaHoy&body=Escucha%20este%20mensaje:%20https://iglesia.miqueas.dev/eh"
-            >Email</a
-          >
-        </div>
-        <small class="muted"
-          >App instalable (PWA). Funciona sin conexión tras la primera
-          visita.</small
-        >
-      </section>
-      <div class="footer">
-        <small>© Asambleas de Dios — EsperanzaHoy</small> ·
-        <a href="/privacy.html">Privacidad</a> ·
-        <small>Hecho con cariño en Perú</small>
-      </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Un mensaje de esperanza para tiempos difíciles. No estás solo, aún hay luz.">
+    <title>EsperanzaHoy • Mensaje de Esperanza</title>
+    
+    <!-- PWA Meta Tags -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#1a365d">
+    <link rel="apple-touch-icon" href="/assets/icon-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="EsperanzaHoy - Un mensaje para ti">
+    <meta property="og:description" content="En medio de la oscuridad, aún hay esperanza. Escucha este mensaje.">
+    <meta property="og:image" content="/assets/og-image.jpg">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a365d;
+            --primary-light: #2c5282;
+            --accent: #ed8936;
+            --accent-light: #f6ad55;
+            --success: #48bb78;
+            --bg-light: #f7fafc;
+            --bg-cream: #fef5e7;
+            --text-dark: #1a202c;
+            --text-muted: #718096;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+            --shadow-xl: 0 20px 25px rgba(0,0,0,0.1);
+            --radius: 16px;
+            --radius-lg: 24px;
+        }
+
+        [data-theme="dark"] {
+            --primary: #4299e1;
+            --primary-light: #63b3ed;
+            --accent: #f6ad55;
+            --accent-light: #fbd38d;
+            --bg-light: #1a202c;
+            --bg-cream: #2d3748;
+            --text-dark: #f7fafc;
+            --text-muted: #a0aec0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, var(--bg-cream) 0%, var(--bg-light) 100%);
+            color: var(--text-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            transition: all 0.3s ease;
+        }
+
+        /* Loading Screen */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-cream);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .pulse {
+            width: 60px;
+            height: 60px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.9); opacity: 0.7; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(0.9); opacity: 0.7; }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            animation: slideDown 0.6s ease;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            box-shadow: var(--shadow-md);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .brand h1 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 4px;
+        }
+
+        .tagline {
+            background: rgba(66, 153, 225, 0.1);
+            color: var(--primary);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            display: inline-block;
+            animation: fadeIn 1s ease 0.3s both;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: relative;
+            width: 60px;
+            height: 30px;
+            background: var(--primary-light);
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle::after {
+            content: '🌙';
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 24px;
+            height: 24px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] .theme-toggle::after {
+            content: '☀️';
+            transform: translateX(30px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            color: white;
+            margin: 30px 0;
+            box-shadow: var(--shadow-xl);
+            position: relative;
+            overflow: hidden;
+            animation: slideUp 0.8s ease;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-50px, -50px) rotate(180deg); }
+        }
+
+        .hero h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Mode Toggle */
+        .mode-selector {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius);
+            padding: 12px 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin: 20px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .mode-switch {
+            position: relative;
+            width: 50px;
+            height: 26px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 13px;
+            cursor: pointer;
+        }
+
+        .mode-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .mode-slider {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 22px;
+            height: 22px;
+            background: white;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .mode-switch input:checked + .mode-slider {
+            transform: translateX(24px);
+            background: var(--accent);
+        }
+
+        /* Offline Banner */
+        .offline-banner {
+            background: var(--success);
+            color: white;
+            padding: 10px 20px;
+            border-radius: var(--radius);
+            margin-top: 20px;
+            display: none;
+            animation: slideDown 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .offline-banner.show {
+            display: block;
+        }
+
+        /* CTA Buttons */
+        .cta-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 25px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn {
+            padding: 14px 24px;
+            border: none;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+        }
+
+        .btn-accent {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-light {
+            background: rgba(255,255,255,0.9);
+            color: var(--primary);
+        }
+
+        /* Audio Player Card */
+        .audio-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: var(--shadow-lg);
+            animation: fadeIn 1s ease;
+        }
+
+        .audio-player {
+            width: 100%;
+            margin: 20px 0;
+        }
+
+        .message-content {
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(102,126,234,0.05) 0%, rgba(118,75,162,0.05) 100%);
+            border-radius: var(--radius);
+            margin-top: 20px;
+            border-left: 4px solid var(--accent);
+            animation: slideLeft 0.8s ease;
+        }
+
+        .message-content p {
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+
+        .message-content em {
+            color: var(--primary);
+            font-style: normal;
+            font-weight: 500;
+        }
+
+        /* Steps Section */
+        .steps-section {
+            margin: 50px 0;
+        }
+
+        .steps-title {
+            text-align: center;
+            font-size: clamp(1.8rem, 3vw, 2.3rem);
+            color: var(--primary);
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .steps-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent) 0%, var(--primary) 100%);
+            border-radius: 2px;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .step-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            animation: fadeUp 0.8s ease;
+            animation-fill-mode: both;
+        }
+
+        .step-card:nth-child(1) { animation-delay: 0.1s; }
+        .step-card:nth-child(2) { animation-delay: 0.2s; }
+        .step-card:nth-child(3) { animation-delay: 0.3s; }
+
+        .step-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent) 0%, var(--primary) 100%);
+        }
+
+        .step-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            border-radius: 50%;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .step-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .step-card p {
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        /* Church Info Section */
+        .church-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: var(--shadow-lg);
+            animation: fadeIn 1s ease;
+        }
+
+        .church-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .church-header h2 {
+            color: var(--primary);
+            font-size: clamp(1.8rem, 3vw, 2.3rem);
+            margin-bottom: 10px;
+        }
+
+        .church-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .church-info {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .info-block {
+            padding: 20px;
+            background: var(--bg-light);
+            border-radius: var(--radius);
+            border-left: 4px solid var(--accent);
+        }
+
+        .info-block h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .church-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin: 25px 0;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 400px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            margin-top: 25px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* QR Section */
+        .qr-section {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(102,126,234,0.05) 0%, rgba(118,75,162,0.05) 100%);
+            border-radius: var(--radius-lg);
+            margin: 40px 0;
+            animation: fadeIn 1s ease;
+        }
+
+        .qr-container {
+            display: inline-block;
+            padding: 20px;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            margin: 20px 0;
+        }
+
+        #qrcode {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Share Section */
+        .share-section {
+            text-align: center;
+            padding: 40px 20px;
+            background: white;
+            border-radius: var(--radius-lg);
+            margin: 40px 0;
+            box-shadow: var(--shadow-md);
+        }
+
+        .share-section h2 {
+            color: var(--primary);
+            margin-bottom: 25px;
+            font-size: clamp(1.8rem, 3vw, 2.3rem);
+        }
+
+        .share-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .share-btn {
+            padding: 12px 24px;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .share-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .share-whatsapp {
+            background: #25D366;
+            color: white;
+        }
+
+        .share-telegram {
+            background: #0088cc;
+            color: white;
+        }
+
+        .share-email {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(0,0,0,0.1);
+            margin-top: 60px;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--primary);
+        }
+
+        /* Animations */
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* PWA Install Prompt */
+        .install-prompt {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 20px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-xl);
+            display: none;
+            z-index: 1000;
+            max-width: 400px;
+            width: 90%;
+            animation: slideUp 0.5s ease;
+        }
+
+        .install-prompt.show {
+            display: block;
+        }
+
+        .install-prompt h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .install-prompt p {
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        .install-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            header {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .hero {
+                padding: 30px 20px;
+            }
+
+            .cta-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .church-section {
+                padding: 25px 20px;
+            }
+
+            .map-container {
+                height: 300px;
+            }
+        }
+
+        /* Loading states */
+        .skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* Accessibility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0,0,0,0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Focus styles */
+        *:focus {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .theme-toggle,
+            .install-prompt,
+            .loader {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loader" id="loader">
+        <div class="pulse"></div>
     </div>
-    <script src="/app.js" defer></script>
-  </body>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo-section">
+                <div class="logo">✝️</div>
+                <div class="brand">
+                    <h1>EsperanzaHoy</h1>
+                    <span class="tagline">No estás solo • Aún hay luz</span>
+                </div>
+            </div>
+            <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema"></button>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <h2>Un mensaje de esperanza para tiempos difíciles</h2>
+            <p>En medio de la incertidumbre, la corrupción y el dolor, queremos recordarte que aún existe la esperanza.</p>
+            
+            <div class="mode-selector">
+                <span>Modo:</span>
+                <label class="mode-switch">
+                    <input type="checkbox" id="modeToggle" checked>
+                    <span class="mode-slider"></span>
+                </label>
+                <span id="modeLabel">Fe cristiana</span>
+            </div>
+
+            <div class="offline-banner" id="offlineBanner">
+                ✅ Estás sin conexión • Este contenido funciona offline
+            </div>
+
+            <div class="cta-group">
+                <button class="btn btn-primary" id="playBtn" aria-label="Reproducir mensaje">
+                    <span>▶️</span> Escuchar mensaje (60s)
+                </button>
+                <a href="https://forms.gle/s1mxPC2WoNAo56G4A" target="_blank" rel="noopener" class="btn btn-accent">
+                    <span>🙏</span> Pedir oración / ayuda
+                </a>
+                <a href="/privacy.html" class="btn btn-light">
+                    <span>🔒</span> Privacidad
+                </a>
+            </div>
+        </section>
+
+        <!-- Audio Player Card -->
+        <section class="audio-card">
+            <audio id="audioPlayer" class="audio-player" controls preload="auto">
+                <source src="/assets/audio-esperanza.wav" type="audio/wav">
+                <source src="/assets/audio-esperanza.mp3" type="audio/mpeg">
+                Tu navegador no soporta audio HTML5.
+            </audio>
+
+            <div class="message-content" id="messageFaith">
+                <p>
+                    Quizá hoy te pesa la corrupción, la inseguridad o las guerras. Jesús dijo: 
+                    <em>"La paz les dejo; mi paz les doy"</em> (Juan 14:27). 
+                    Esa paz no ignora el dolor; lo atraviesa contigo.
+                </p>
+                <p>
+                    Respira profundo... cuenta hasta tres. No estás solo: hay una familia que ora por ti. 
+                    Si necesitas que oremos, toca el botón. Si buscas dirección, abre los pasos sencillos que preparamos.
+                </p>
+                <p>
+                    Y recuerda: <em>"Los que confían en el Señor renovarán sus fuerzas"</em> (Isaías 40:31). 
+                    Hoy, da un pequeño paso: comparte este mensaje con alguien que lo necesite. Dios te bendiga.
+                </p>
+            </div>
+
+            <div class="message-content" id="messageUniversal" style="display: none;">
+                <p>
+                    Tal vez sientes que el mundo se rompe: violencia, corrupción, guerra. 
+                    Aun así, hay actos pequeños que sostienen la esperanza.
+                </p>
+                <p>
+                    Respira profundo... cuenta hasta tres. Pide ayuda: hablar con alguien reduce la carga. 
+                    Da un gesto de bondad: un mensaje, una visita, un perdón.
+                </p>
+                <p>
+                    Aquí tienes recursos y una guía breve. Si deseas contarnos algo o pedir apoyo, toca el botón. 
+                    La esperanza no es ingenua: es la decisión de creer que tu próximo paso puede iluminar el camino.
+                </p>
+            </div>
+        </section>
+
+        <!-- Steps Section -->
+        <section class="steps-section">
+            <h2 class="steps-title">3 Pasos Prácticos Para Hoy</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Respirar y Calmar</h3>
+                    <p>
+                        Inhala durante 4 segundos, sostén 4 segundos, exhala durante 6 segundos. 
+                        Repite 3 veces. Deja que tu mente se calme para decidir el siguiente paso con claridad.
+                    </p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Pedir Apoyo</h3>
+                    <p>
+                        No estás solo. Hablar reduce la carga emocional. 
+                        Usa el botón "Pedir oración/ayuda" o conversa con alguien de confianza hoy mismo.
+                    </p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Hacer un Bien</h3>
+                    <p>
+                        Envía un mensaje de ánimo, visita a alguien que lo necesite, ofrece perdón. 
+                        Las pequeñas luces pueden cambiar todo un ambiente.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Church Information -->
+        <section class="church-section">
+            <div class="church-header">
+                <h2>Encuéntranos</h2>
+                <p>Asambleas de Dios - Iglesia Luz y Vida</p>
+            </div>
+
+            <div class="church-info">
+                <div class="info-block">
+                    <h3>📍 Dirección</h3>
+                    <p>Los Licenciados Mz U Lt 1<br>Ayacucho, Perú</p>
+                </div>
+                <div class="info-block">
+                    <h3>📅 Horarios</h3>
+                    <p>Martes, Jueves, Sábado y Domingo<br>6:00 PM - 8:30 PM</p>
+                </div>
+            </div>
+
+            <div class="church-actions">
+                <a href="https://www.google.com/maps/search/?api=1&query=Los%20licenciados%20Mz%20U%20Lt%201%20Peru" 
+                   target="_blank" rel="noopener" class="btn btn-primary">
+                    <span>🗺️</span> Cómo llegar
+                </a>
+                <a href="tel:+51910661724" class="btn btn-accent">
+                    <span>📞</span> Llamar
+                </a>
+                <a href="https://wa.me/51910661724?text=Hola%2C%20quisiera%20más%20información%20de%20la%20iglesia." 
+                   target="_blank" rel="noopener" class="btn btn-accent">
+                    <span>💬</span> WhatsApp
+                </a>
+            </div>
+
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d242.82928594858902!2d-74.22998769770481!3d-13.145451523841222!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sLos%20licenciados%20Mz%20U%20Lt%201%20Peru!5e0!3m2!1ses-419!2spe!4v1756512653267!5m2!1ses-419!2spe" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Ubicación de Iglesia Luz y Vida">
+                </iframe>
+            </div>
+        </section>
+
+        <!-- QR Code Section -->
+        <section class="qr-section">
+            <h2>Escanea y Comparte</h2>
+            <p>Comparte este mensaje de esperanza con más personas</p>
+            <div class="qr-container">
+                <div id="qrcode"></div>
+            </div>
+            <p><small>iglesia.miqueas.dev</small></p>
+        </section>
+
+        <!-- Share Section -->
+        <section class="share-section">
+            <h2>Comparte Esperanza</h2>
+            <p>Un mensaje compartido puede cambiar el día de alguien</p>
+            <div class="share-buttons">
+                <a href="https://api.whatsapp.com/send?text=Escucha%20este%20mensaje%20de%20esperanza:%20https://iglesia.miqueas.dev" 
+                   target="_blank" rel="noopener" class="share-btn share-whatsapp">
+                    <span>📱</span> WhatsApp
+                </a>
+                <a href="https://t.me/share/url?url=https://iglesia.miqueas.dev&text=Un%20mensaje%20de%20esperanza%20para%20ti" 
+                   target="_blank" rel="noopener" class="share-btn share-telegram">
+                    <span>✈️</span> Telegram
+                </a>
+                <a href="mailto:?subject=Un%20mensaje%20de%20esperanza&body=Hola,%20quiero%20compartir%20contigo%20este%20mensaje%20de%20esperanza:%20https://iglesia.miqueas.dev" 
+                   class="share-btn share-email">
+                    <span>✉️</span> Email
+                </a>
+            </div>
+        </section>
+
+        <!-- PWA Install Prompt -->
+        <div class="install-prompt" id="installPrompt">
+            <h3>📱 Instalar App</h3>
+            <p>Instala EsperanzaHoy en tu dispositivo para acceder sin conexión</p>
+            <div class="install-buttons">
+                <button class="btn btn-primary" id="installBtn">Instalar</button>
+                <button class="btn btn-light" id="dismissBtn">Ahora no</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            © 2025 Asambleas de Dios - EsperanzaHoy<br>
+            <a href="/privacy.html">Política de Privacidad</a> • 
+            Hecho con ❤️ en Perú
+        </p>
+        <p><small>App PWA • Funciona sin conexión tras la primera visita</small></p>
+    </footer>
+
+    <!-- QR Code Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    
+    <!-- Main JavaScript -->
+    <script>
+        // Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(reg => console.log('Service Worker registered'))
+                    .catch(err => console.error('Service Worker registration failed:', err));
+            });
+        }
+
+        // Hide loader when page is ready
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 500);
+        });
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const theme = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+        });
+
+        // Mode Toggle (Faith/Universal)
+        const modeToggle = document.getElementById('modeToggle');
+        const modeLabel = document.getElementById('modeLabel');
+        const messageFaith = document.getElementById('messageFaith');
+        const messageUniversal = document.getElementById('messageUniversal');
+
+        modeToggle.addEventListener('change', () => {
+            if (modeToggle.checked) {
+                modeLabel.textContent = 'Fe cristiana';
+                messageFaith.style.display = 'block';
+                messageUniversal.style.display = 'none';
+            } else {
+                modeLabel.textContent = 'Mensaje universal';
+                messageFaith.style.display = 'none';
+                messageUniversal.style.display = 'block';
+            }
+        });
+
+        // Audio Player
+        const playBtn = document.getElementById('playBtn');
+        const audioPlayer = document.getElementById('audioPlayer');
+
+        playBtn.addEventListener('click', () => {
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+                playBtn.innerHTML = '<span>⏸️</span> Pausar mensaje';
+            } else {
+                audioPlayer.pause();
+                playBtn.innerHTML = '<span>▶️</span> Escuchar mensaje (60s)';
+            }
+        });
+
+        audioPlayer.addEventListener('ended', () => {
+            playBtn.innerHTML = '<span>▶️</span> Escuchar mensaje (60s)';
+        });
+
+        // Offline Banner
+        const offlineBanner = document.getElementById('offlineBanner');
+        
+        function updateOnlineStatus() {
+            if (!navigator.onLine) {
+                offlineBanner.classList.add('show');
+            } else {
+                offlineBanner.classList.remove('show');
+            }
+        }
+
+        window.addEventListener('online', updateOnlineStatus);
+        window.addEventListener('offline', updateOnlineStatus);
+        updateOnlineStatus();
+
+        // Generate QR Code
+        new QRCode(document.getElementById("qrcode"), {
+            text: "https://iglesia.miqueas.dev",
+            width: 200,
+            height: 200,
+            colorDark: "#1a365d",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
+        });
+
+        // PWA Install Prompt
+        let deferredPrompt;
+        const installPrompt = document.getElementById('installPrompt');
+        const installBtn = document.getElementById('installBtn');
+        const dismissBtn = document.getElementById('dismissBtn');
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            
+            // Show install prompt after 30 seconds
+            setTimeout(() => {
+                if (deferredPrompt) {
+                    installPrompt.classList.add('show');
+                }
+            }, 30000);
+        });
+
+        installBtn.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                console.log(`User response: ${outcome}`);
+                deferredPrompt = null;
+                installPrompt.classList.remove('show');
+            }
+        });
+
+        dismissBtn.addEventListener('click', () => {
+            installPrompt.classList.remove('show');
+        });
+
+        // Smooth scroll for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.step-card, .church-section, .share-section').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Add ripple effect to buttons
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple');
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Analytics (opcional)
+        console.log('%c¡Gracias por visitar EsperanzaHoy! 🙏', 'color: #1a365d; font-size: 16px; font-weight: bold;');
+        console.log('%cSi necesitas ayuda técnica, contacta con nosotros.', 'color: #718096; font-size: 12px;');
+    </script>
+</body>
 </html>

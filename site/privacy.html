@@ -1,31 +1,441 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Política de privacidad - EsperanzaHoy">
     <title>Privacidad • EsperanzaHoy</title>
-    <link rel="manifest" href="/manifest.json" />
-    <link rel="stylesheet" href="/styles.css" />
-  </head>
-  <body>
+    
+    <!-- PWA Meta Tags -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#1a365d">
+    <link rel="apple-touch-icon" href="/assets/icon-192.png">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a365d;
+            --primary-light: #2c5282;
+            --accent: #ed8936;
+            --bg-light: #f7fafc;
+            --bg-cream: #fef5e7;
+            --text-dark: #1a202c;
+            --text-muted: #718096;
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+            --radius: 16px;
+            --radius-lg: 24px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, var(--bg-cream) 0%, var(--bg-light) 100%);
+            color: var(--text-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px 0;
+            margin-bottom: 30px;
+            animation: slideDown 0.6s ease;
+        }
+
+        .logo {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .brand h1 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 4px;
+        }
+
+        .tagline {
+            background: rgba(66, 153, 225, 0.1);
+            color: var(--primary);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            display: inline-block;
+        }
+
+        .privacy-content {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 30px;
+            flex: 1;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .privacy-content h2 {
+            color: var(--primary);
+            font-size: clamp(1.8rem, 3vw, 2.3rem);
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .privacy-content h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent) 0%, var(--primary) 100%);
+            border-radius: 2px;
+        }
+
+        .privacy-section {
+            margin-bottom: 30px;
+            animation: slideUp 0.8s ease;
+            animation-fill-mode: both;
+        }
+
+        .privacy-section:nth-child(2) { animation-delay: 0.1s; }
+        .privacy-section:nth-child(3) { animation-delay: 0.2s; }
+        .privacy-section:nth-child(4) { animation-delay: 0.3s; }
+        .privacy-section:nth-child(5) { animation-delay: 0.4s; }
+
+        .privacy-section h3 {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .icon {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+        }
+
+        .privacy-section p, .privacy-section ul {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .privacy-section ul {
+            padding-left: 30px;
+        }
+
+        .privacy-section li {
+            margin-bottom: 8px;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, rgba(237,137,54,0.1) 0%, rgba(237,137,54,0.05) 100%);
+            padding: 20px;
+            border-radius: var(--radius);
+            border-left: 4px solid var(--accent);
+            margin: 20px 0;
+        }
+
+        .contact-info {
+            background: var(--bg-light);
+            padding: 20px;
+            border-radius: var(--radius);
+            margin-top: 20px;
+        }
+
+        .contact-info h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .contact-info a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 24px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
+            margin-top: 30px;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(0,0,0,0.1);
+            margin-top: 40px;
+        }
+
+        .last-updated {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+
+        /* Animations */
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .privacy-content {
+                padding: 25px 20px;
+            }
+
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* Accessibility */
+        *:focus {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .btn-back {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
     <div class="container">
-      <header>
-        <img src="/assets/logo.png" alt="Logo" />
-        <div>
-          <h1>EsperanzaHoy</h1>
-          <div class="tag">Aviso de privacidad</div>
-        </div>
-      </header>
-      <section class="card">
-        <p>
-          Recogemos la menor cantidad de datos posible. Si utilizas el
-          formulario de oración/ayuda, tus datos serán usados solo para
-          contactarte y acompañarte. No compartimos información con terceros con
-          fines comerciales. Puedes solicitarnos la eliminación de tus datos en
-          cualquier momento.
-        </p>
-      </section>
-      <div class="footer"><a class="btn" href="/index.html">Regresar</a></div>
+        <header>
+            <div class="logo">🔒</div>
+            <div class="brand">
+                <h1>EsperanzaHoy</h1>
+                <span class="tagline">Política de Privacidad</span>
+            </div>
+        </header>
+
+        <main class="privacy-content">
+            <h2>Tu Privacidad es Nuestra Prioridad</h2>
+
+            <div class="privacy-section">
+                <h3>
+                    <span class="icon">📋</span>
+                    Información que Recopilamos
+                </h3>
+                <p>
+                    En EsperanzaHoy, respetamos profundamente tu privacidad. Solo recopilamos la información 
+                    mínima necesaria para brindarte apoyo espiritual y emocional:
+                </p>
+                <ul>
+                    <li><strong>Formulario de oración:</strong> Nombre (opcional), correo electrónico o teléfono (para contactarte), y tu petición de oración.</li>
+                    <li><strong>Datos de uso:</strong> Información anónima sobre cómo utilizas la aplicación para mejorar nuestros servicios.</li>
+                    <li><strong>Cookies técnicas:</strong> Solo las necesarias para el funcionamiento offline de la PWA.</li>
+                </ul>
+            </div>
+
+            <div class="privacy-section">
+                <h3>
+                    <span class="icon">🎯</span>
+                    Cómo Usamos tu Información
+                </h3>
+                <p>
+                    Tu información se utiliza exclusivamente para:
+                </p>
+                <ul>
+                    <li>Responder a tus peticiones de oración y brindar apoyo pastoral.</li>
+                    <li>Enviarte mensajes de aliento y esperanza (solo si lo has solicitado).</li>
+                    <li>Mejorar nuestros servicios y la experiencia de usuario.</li>
+                    <li>Mantener la funcionalidad offline de la aplicación.</li>
+                </ul>
+            </div>
+
+            <div class="privacy-section">
+                <h3>
+                    <span class="icon">🛡️</span>
+                    Protección de tus Datos
+                </h3>
+                <p>
+                    Implementamos medidas de seguridad robustas para proteger tu información:
+                </p>
+                <ul>
+                    <li>Encriptación de datos en tránsito (HTTPS).</li>
+                    <li>Acceso restringido solo al personal pastoral autorizado.</li>
+                    <li>No vendemos ni compartimos tu información con terceros con fines comerciales.</li>
+                    <li>Los datos del formulario se procesan a través de Google Forms con sus propias medidas de seguridad.</li>
+                </ul>
+            </div>
+
+            <div class="highlight">
+                <p>
+                    <strong>🙏 Compromiso Pastoral:</strong> Toda información compartida en peticiones de oración 
+                    es tratada con absoluta confidencialidad pastoral. Solo el equipo de oración de la iglesia 
+                    tendrá acceso a estas peticiones.
+                </p>
+            </div>
+
+            <div class="privacy-section">
+                <h3>
+                    <span class="icon">⚖️</span>
+                    Tus Derechos
+                </h3>
+                <p>
+                    Tienes derecho a:
+                </p>
+                <ul>
+                    <li>Acceder a la información que tenemos sobre ti.</li>
+                    <li>Solicitar la corrección de datos incorrectos.</li>
+                    <li>Pedir la eliminación completa de tu información.</li>
+                    <li>Retirar tu consentimiento en cualquier momento.</li>
+                    <li>Recibir una copia de tus datos en formato legible.</li>
+                </ul>
+            </div>
+
+            <div class="privacy-section">
+                <h3>
+                    <span class="icon">👶</span>
+                    Protección de Menores
+                </h3>
+                <p>
+                    EsperanzaHoy está comprometido con la protección de menores de edad. 
+                    No recopilamos intencionalmente información de menores de 13 años sin el 
+                    consentimiento de sus padres o tutores. Si eres menor de edad, por favor 
+                    consulta con tus padres antes de compartir cualquier información.
+                </p>
+            </div>
+
+            <div class="privacy-section">
+                <h3>
+                    <span class="icon">🔄</span>
+                    Cambios en esta Política
+                </h3>
+                <p>
+                    Podemos actualizar esta política de privacidad ocasionalmente. 
+                    Te notificaremos sobre cambios significativos publicando la nueva 
+                    política en esta página y actualizando la fecha de "Última actualización".
+                </p>
+            </div>
+
+            <div class="contact-info">
+                <h4>📞 Contacto para Privacidad</h4>
+                <p>
+                    Si tienes preguntas sobre esta política de privacidad o deseas ejercer 
+                    tus derechos, puedes contactarnos:
+                </p>
+                <ul>
+                    <li>📧 Email: <a href="mailto:privacidad@iglesia.miqueas.dev">privacidad@iglesia.miqueas.dev</a></li>
+                    <li>📱 WhatsApp: <a href="https://wa.me/51910661724">+51 910 661 724</a></li>
+                    <li>📍 Dirección: Los Licenciados Mz U Lt 1, Ayacucho, Perú</li>
+                </ul>
+            </div>
+
+            <div class="last-updated">
+                <p>📅 Última actualización: Diciembre 2024</p>
+            </div>
+
+            <a href="/index.html" class="btn-back">
+                <span>←</span> Volver al inicio
+            </a>
+        </main>
+
+        <footer>
+            <p>© 2025 Asambleas de Dios - EsperanzaHoy</p>
+            <p>Hecho con ❤️ en Perú</p>
+        </footer>
     </div>
-  </body>
+</body>
 </html>
